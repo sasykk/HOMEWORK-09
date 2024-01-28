@@ -64,17 +64,18 @@ ACTIONS = {
 @input_error
 def get_action(customer_input):
     action = customer_input.split()[0]
-    return ACTIONS.get("Unknown action. Please, try again.")
+    return ACTIONS.get(action, lambda x: f"Unknown action '{x}'. Please, try again.")
 
 def main():
     while True:
         try:
-            customer_input = input().lower().strip()
+            customer_input = input(">>>").lower().strip()
             handler = get_action(customer_input)
             result = handler(customer_input)
             print(result)
             if result == "Good bye!":
                 break
+
         except (IndexError, ValueError, KeyError) as e:
             print(str(e))
 
