@@ -27,7 +27,8 @@ def change(customer_input):
     if name in CONTACTS:
         CONTACTS[name] = phone
         return "Contact updated successfully!"
-    raise TypeError("Contact not found.")
+    else:
+        return "Contact with such name does not exist."
 
 @input_error
 def get_phone(customer_input):
